@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
+import utils.MethodsUtils;
 
 public class LoginPage {
 
@@ -29,38 +29,37 @@ public class LoginPage {
 
 	@FindBy(className = "nav-brand-subtitle")
 	private WebElement navGerenciador;
-	
-	@FindBy(xpath = "//div[@role='alert']" )
-	private WebElement erroLoginMenssage;
-	
 
-	public void esperarElemento(WebElement elemento) {
-		WebDriverWait wait = new WebDriverWait(driver, 10);
-		wait.until(ExpectedConditions.visibilityOf(elemento));
-	}
+	@FindBy(xpath = "//div[@role='alert']")
+	private WebElement erroLoginMenssage;
 
 	public void preencherUsuario(String nomeUsuario) {
-		esperarElemento(usuario);
+		MethodsUtils.esperarElemento(usuario);
 		usuario.sendKeys(nomeUsuario);
 	}
 
 	public void preencherSenha(String senhaUsuario) {
-		esperarElemento(senha);
+		MethodsUtils.esperarElemento(senha);
 		senha.sendKeys(senhaUsuario);
 	}
 
 	public void clicaBotaoLogin() {
-		esperarElemento(btnLogin);
+		MethodsUtils.esperarElemento(btnLogin);
 		btnLogin.click();
 	}
-	
+
 	public void validarGerenciadorDeProdutos() {
-		esperarElemento(navGerenciador);
+		MethodsUtils.esperarElemento(navGerenciador);
 		assertTrue(navGerenciador.isEnabled());
 	}
-	
+
 	public void validarMensagemDeErroDeLogin() {
-		esperarElemento(erroLoginMenssage);
-		assertTrue(erroLoginMenssage.isEnabled());
+		try {
+			MethodsUtils.esperarElemento(erroLoginMenssage);
+			assertTrue(erroLoginMenssage.isEnabled());
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
 	}
 }

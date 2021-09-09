@@ -10,8 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
+import utils.MethodsUtils;
 
 public class StorePage {
 
@@ -46,29 +46,25 @@ public class StorePage {
 	@FindBy(css = "tr:last-child td:nth-child(3) div:nth-child(2) a:last-of-type")
 	private WebElement btnRemover;
 
-	public void esperarElemento(WebElement elemento) {
-		WebDriverWait wait = new WebDriverWait(driver, 10);
-		wait.until(ExpectedConditions.visibilityOf(elemento));
-	}
 
 	public void acessarMenuLojas() {
-		esperarElemento(menuLojas);
+		MethodsUtils.esperarElemento(menuLojas);
 		menuLojas.click();
 	}
 
 	public void acessarMenuCadastrarLojas() {
-		esperarElemento(menuCadastrarLojas);
+		MethodsUtils.esperarElemento(menuCadastrarLojas);
 		menuCadastrarLojas.click();
 	}
 
 	public void preencherNovoNomeDeLoja(String newStoreName) {
-		esperarElemento(campoNovaLoja);
+		MethodsUtils.esperarElemento(campoNovaLoja);
 		campoNovaLoja.clear();
 		campoNovaLoja.sendKeys(newStoreName);
 	}
 
 	public void cadastrarNovaLoja() {
-		esperarElemento(btnCadastrar);
+		MethodsUtils.esperarElemento(btnCadastrar);
 		btnCadastrar.click();
 	}
 
@@ -88,17 +84,17 @@ public class StorePage {
 	}
 
 	public void mostrarMenuComListaDeLojas() {
-		esperarElemento(menuListaDeLojas);
+		MethodsUtils.esperarElemento(menuListaDeLojas);
 		menuListaDeLojas.click();
 	}
 
 	public void validaNovaLoja(String arg1) {
-		esperarElemento(novaLoja);
+		MethodsUtils.esperarElemento(novaLoja);
 		assertEquals(arg1, novaLoja.getText());
 	}
 
 	public void btnEditarNomeDaLoja() {
-		esperarElemento(btnEditar);
+		MethodsUtils.esperarElemento(btnEditar);
 		btnEditar.click();
 	}
 
@@ -118,7 +114,7 @@ public class StorePage {
 	}
 
 	public void btnRemoverLoja() {
-		esperarElemento(btnRemover);
+		MethodsUtils.esperarElemento(btnRemover);
 		btnRemover.click();
 	}
 
@@ -154,6 +150,46 @@ public class StorePage {
 
 	public void validarRemocaoDoNomeDaloja() {
 		assertNotEquals(novaLoja, "Americanas");
+	}
+
+	public void validarMensagemDeLojaJaCriada() {
+		try {
+			Thread.sleep(500);
+			Alert alert = driver.switchTo().alert();
+			String alertText = alert.getText();
+			assertEquals("Por favor informa um nome diferente", alertText);
+			alert.accept();
+
+		} catch (NoAlertPresentException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} finally {
+			Alert alert = driver.switchTo().alert();
+			alert.accept();
+			
+		}
+	}
+	
+
+	public void validarAlertDePreenchimentoObrigatrio() {
+		try {
+			Thread.sleep(500);
+			Alert alert = driver.switchTo().alert();
+			String alertText = alert.getText();
+			assertEquals("Favor informar o nome da Loja", "Preenchimento Obrigatorio!", alertText);
+			assertTrue(alertText.equals("Preenchimento Obrigatorio!"));
+			alert.accept();
+
+		} catch (NoAlertPresentException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} finally {
+			Alert alert = driver.switchTo().alert();
+			alert.accept();
+			
+		}
 	}
 
 }

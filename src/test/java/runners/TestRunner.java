@@ -8,11 +8,14 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		features =  "classpath:Features"
-		,glue = {"stepdefinitions"}
+		,glue = {"stepdefinitions","Hooks"}
 		,tags = {"@End2End"}
-		
+		,plugin = {"pretty","html:target/cucumber-reports"}
+		,monochrome = true
+				
 		)
 public class TestRunner {
 	
 
 }
+
