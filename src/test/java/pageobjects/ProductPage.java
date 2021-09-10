@@ -118,7 +118,7 @@ public class ProductPage {
 
 	public void preencherSelecaoDoProduto() {
 		MethodsUtils.esperarElemento(apresentacaoProduto);
-		MethodsUtils.selecionar(apresentacaoProduto, "preÃ§o sob consulta");
+		MethodsUtils.selecionar(apresentacaoProduto, "preço sob consulta");
 
 	}
 
@@ -152,7 +152,7 @@ public class ProductPage {
 	public void selecionarbotao() {
 		WebElement botao11 = null;
 		for (int i = 0; i < selectButton.size(); i++) {
-			if (selectButton.get(i).getText().contains("botÃ£o 11")) {
+			if (selectButton.get(i).getText().contains("botão 11")) {
 				botao11 = selectButton.get(i);
 			}
 		}
@@ -180,7 +180,7 @@ public class ProductPage {
 
 	public void preencherSubCategoriaDoProduto() {
 		MethodsUtils.esperarElemento(selectSubCategoria);
-		MethodsUtils.selecionar(selectSubCategoria, "sofÃ¡s");
+		MethodsUtils.selecionar(selectSubCategoria, "sofás");
 
 	}
 
@@ -231,8 +231,8 @@ public class ProductPage {
 			Thread.sleep(500);
 			Alert alert = driver.switchTo().alert();
 			String alertText = alert.getText();
-			assertEquals("BotÃ£o cadastrado com sucesso!", alertText);
-			assertTrue(alertText.equals("BotÃ£o cadastrado com sucesso!"));
+			assertEquals("Botão cadastrado com sucesso!", alertText);
+			assertTrue(alertText.equals("Botão cadastrado com sucesso!"));
 			alert.accept();
 		} catch (NoAlertPresentException e) {
 			e.printStackTrace();
@@ -248,7 +248,7 @@ public class ProductPage {
 				botaoTeste = selectButton.get(i);
 			}
 		}
-		assertTrue("botÃ£o Cadastrado nÃ£o foi encontrado", botaoTeste != null);
+		assertTrue("Botão Cadastrado não foi encontrado", botaoTeste != null);
 		MethodsUtils.esperarElemento(botaoTeste);
 		assertEquals("Botao divergente", "Botao Teste", botaoTeste.getText());
 
