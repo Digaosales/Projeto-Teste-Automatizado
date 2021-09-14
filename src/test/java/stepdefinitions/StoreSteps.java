@@ -11,7 +11,7 @@ public class StoreSteps {
 
 	StorePage sp;
 	LoginPage lp;
-
+	
 	@Dado("^que o usuario esteja na pagina principal ou na home apos o login$")
 	public void que_o_usuario_esteja_na_pagina_principal_ou_na_home_apos_o_login() throws Throwable {
 		lp = new LoginPage(DriverUtils.getDriver());

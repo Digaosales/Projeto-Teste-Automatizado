@@ -21,6 +21,8 @@ public class StorePage {
 		PageFactory.initElements(driver, this);
 		this.driver = driver;
 	}
+	
+	
 
 	@FindBy(xpath = "//a[@href='/store']")
 	private WebElement menuLojas;
@@ -50,6 +52,7 @@ public class StorePage {
 	public void acessarMenuLojas() {
 		MethodsUtils.esperarElemento(menuLojas);
 		menuLojas.click();
+		
 	}
 
 	public void acessarMenuCadastrarLojas() {

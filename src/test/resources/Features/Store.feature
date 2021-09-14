@@ -1,5 +1,6 @@
 #language:pt
 @End2End
+@ScreenTest
 Funcionalidade: Store
 
   Contexto: 

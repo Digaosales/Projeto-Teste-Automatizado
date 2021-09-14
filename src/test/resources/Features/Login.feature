@@ -29,21 +29,18 @@ Funcionalidade: Login
     E clicar no botao entrar
     Entao o sistema devera apresentar mensagem de erro
 
-  
   Cenario: erro ao tentar logar com nome de usuario com a primeira letra maiuscula
     Quando informar o campo de login como "Rodrigo"
     E informar o campo de senha como "123456"
     E clicar no botao entrar
     Entao o sistema devera apresentar mensagem de erro
 
- 
   Cenario: erro ao tentar logar com usuario em maiusculo e senha correta.
     Quando informar o campo de login como "RODRIGO"
     E informar o campo de senha como "123456"
     E clicar no botao entrar
     Entao o sistema devera apresentar mensagem de erro
 
-  
   Cenario: erro ao tentar logar com senha com CAPS LOCK ativado.
     Quando informar o campo de login como "romulo"
     E informar o campo de senha como "SOL123"

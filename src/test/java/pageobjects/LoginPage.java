@@ -2,6 +2,8 @@ package pageobjects;
 
 import static org.junit.Assert.assertTrue;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -33,7 +35,7 @@ public class LoginPage {
 	@FindBy(xpath = "//div[@role='alert']")
 	private WebElement erroLoginMenssage;
 
-	public void preencherUsuario(String nomeUsuario) {
+	public void preencherUsuario(String nomeUsuario) throws IOException {
 		MethodsUtils.esperarElemento(usuario);
 		usuario.sendKeys(nomeUsuario);
 	}
